@@ -1,0 +1,20 @@
+{
+  "name": "fontasme",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.10.2",
+    "sass": "^1.50.0",
+    "vue": "^3.2.25",
+    "vue-i18n": "^9.1.9"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.0",
+    "vite": "^2.9.0"
+  }
+}
