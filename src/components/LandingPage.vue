@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 * @property {number} borderY -- indicates where the ball stops on Y axis, differs on desktop and mobile.
 */
 
+const HIDE_BALL_CLASS = 'landing-page__ball--hide';
 const ball = ref(null);
 const mainHead = ref(null);
 const mainHeadMobile = ref(null);
@@ -34,7 +35,6 @@ const getMousePosition = () => {
 }
 
 const animateBall = () => {
-  const HIDE_BALL_CLASS = 'landing-page__ball--hide';
   let distX = mouseX - ballX;
   let distY = mouseY - ballY;
 
@@ -58,6 +58,8 @@ const animateBall = () => {
 }
 
 onMounted(() => {
+  ball.value.classList.add(HIDE_BALL_CLASS);
+
   animateBall();
 
   gsap.to([mainHead.value, aboutMeHead.value, aboutMeText.value, scrollText.value], {

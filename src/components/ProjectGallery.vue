@@ -147,7 +147,7 @@ const keyboardNav = (e) => {
       .nav-guide {
         font-weight: $thin-text;
         font-size: $size-small;
-        color: #3C3C3C;
+        color: black;
         &__left,
         &__right {
           border: 1px solid #9E9E9E;

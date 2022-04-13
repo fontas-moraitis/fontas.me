@@ -15,7 +15,6 @@ export default [
   {
     name: 'apta.tech',
     description: `A SPA for a technology start-up in the Hague, designed and build from scratch with VUE and Contentful as CMS.`,
-    github: 'https://github.com/fontas-moraitis/apta',
     live: '//www.apta.tech',
     logo: '02'
   },

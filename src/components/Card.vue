@@ -82,7 +82,7 @@ let props = defineProps({
       white-space: nowrap;
       font-size: $fine-text;
       border-radius: 4px;
-      color: red;
+      color: $color-text-dark;
       &:hover {
         @include shadow-in;
         cursor: url(../assets/link.svg), auto;
