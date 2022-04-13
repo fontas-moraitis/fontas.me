@@ -100,10 +100,7 @@ let props = defineProps({
   }
 }
 
-@media only screen 
-    and (device-width: 390px) 
-    and (device-height: 844px) 
-    and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (max-width: $mobile-breaking-point)  {
   .card {
     @include shadow-out-mobile;
     display: flex;

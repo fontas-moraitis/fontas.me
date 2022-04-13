@@ -197,10 +197,7 @@ onMounted(() => {
     }
   }
 
-@media only screen 
-    and (device-width: 390px) 
-    and (device-height: 844px) 
-    and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (max-width: $mobile-breaking-point) {
     .landing-page {
       height: calc(100vh - 100px);
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
