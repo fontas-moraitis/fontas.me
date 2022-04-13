@@ -82,10 +82,10 @@ let props = defineProps({
       white-space: nowrap;
       font-size: $fine-text;
       border-radius: 4px;
-      color: $color-highlight;
+      color: red;
       &:hover {
         @include shadow-in;
-        cursor: url(../assets/circleEmpty.svg), auto;
+        cursor: url(../assets/link.svg), auto;
         color: $color-text-grey-light;
         border: none;
       }
@@ -136,7 +136,6 @@ let props = defineProps({
         writing-mode: vertical-lr;
         transform: rotate(-180deg);
         font-size: $mobile-text;
-        color: $color-highlight;
         border: none;
         box-shadow: none;
         text-decoration: underline;

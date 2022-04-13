@@ -41,7 +41,7 @@ onMounted(() => {
     scrollTrigger: {
       trigger: galleryIntro.value,
       start: 'top bottom',
-      scrub: true,
+      scrub: 1,
     }
   });
 });
@@ -147,7 +147,7 @@ const keyboardNav = (e) => {
       .nav-guide {
         font-weight: $thin-text;
         font-size: $size-small;
-        color: #9E9E9E;
+        color: #3C3C3C;
         &__left,
         &__right {
           border: 1px solid #9E9E9E;

@@ -47,7 +47,7 @@
         }
         &:hover,
         &:focus-visible {
-          cursor: url(../assets/circleEmpty.svg), auto;
+          cursor: url(../assets/link.svg), auto;
         }
         &:focus-visible {
           border: 1px solid $color-shadow-dark;
