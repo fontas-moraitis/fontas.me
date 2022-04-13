@@ -22,9 +22,9 @@ import Footer from './components/Footer.vue';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #062234;
-  /* background: linear-gradient(180deg, #FBFAFA 0%, #EFEEEE 100%); */
   cursor:url(./assets/circle.svg), auto;
 }
+
 .content-wrapper {
   max-width: 1200px;
   margin: 0 auto;

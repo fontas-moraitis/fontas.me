@@ -2,11 +2,12 @@
   "hello": "Hello.",
   "hi": "hi.",
   "aboutMeHeading": "About me",
-  "aboutMeText": "I am a developer based in Amsterdam with a passion for building stuff for the web. I have a strong background in design which combined with my passion for solving real-life problems with code allows me to take on new challenges confidently. When offline, I enjoy long walks with (and without) my camera, reading and drawing.",
+  "aboutMeText": "I am a software engineer based in Amsterdam with a passion for building stuff for the web. I have a strong background in design which helps me create simple and intuitive solutions. I enjoy everything related to frontend development and always strive to write clean code that solves a problem in the simplest way possible.",
   "scrollDown": "Scroll down for a quick look at some of my projects",
   "galleryTitle": "This is some of my stuff",
   "gallerySubtitle": "Use the buttons under the cards or left and right arrows",
-  "gallerySubtitleMobile": "Scroll left or right",
-  "sourceCode": "source code",
-  "visitLive": "visit live"
+  "gallerySubtitleMobile": "Swipe left/right",
+  "sourceCode": "Source code",
+  "visitLive": "Visit live",
+  "footerHeading": "Thanks for reading!"
 }

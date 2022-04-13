@@ -56,6 +56,7 @@ let props = defineProps({
     @include flex-column-center;
     &__title {
       font-weight: $bold-text;
+      color: $color-text-dark;
       margin-bottom: $size-small;
       text-transform: uppercase;
       white-space: nowrap;
@@ -82,11 +83,15 @@ let props = defineProps({
       font-size: $fine-text;
       border-radius: 4px;
       color: $color-highlight;
-      &:focus-visible, &:hover {
+      &:hover {
         @include shadow-in;
         cursor: url(../assets/circleEmpty.svg), auto;
         color: $color-text-grey-light;
         border: none;
+      }
+      &:focus-visible {
+        border: 2px solid black;
+        outline: none;
       }
       &__img {
         margin-left: $size-xxsmall;
@@ -95,7 +100,10 @@ let props = defineProps({
   }
 }
 
-@media (max-width: 600px) {
+@media only screen 
+    and (device-width: 390px) 
+    and (device-height: 844px) 
+    and (-webkit-device-pixel-ratio: 3) {
   .card {
     @include shadow-out-mobile;
     display: flex;

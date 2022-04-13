@@ -1,7 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import gsap, { Expo, Bounce } from 'gsap';
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 gsap.registerPlugin(ScrollTrigger);
 
 /**
@@ -33,31 +34,24 @@ const getMousePosition = () => {
 }
 
 const animateBall = () => {
+  const HIDE_BALL_CLASS = 'landing-page__ball--hide';
   let distX = mouseX - ballX;
   let distY = mouseY - ballY;
 
   ballX = ballX + (distX * SPEED);
   ballY = ballY + (distY * SPEED);
 
-  // Check the ball's Y position to avoid getting below header
-  if (ball.value && ballY < borderY) {
-    ball.value.classList.remove('hide-ball');
-    ball.value.style.left = `${ballX + 12}px` // 12px to compensate for custom cursor size 24x24
-    ball.value.style.top = `${ballY + 12}px`
-    ball.value.style.opacity = `${(ballY / 1000).toPrecision(4)}`
-  }
+  let isBallNearXBorder = ball.value?.getBoundingClientRect().right + 200 >= window.innerWidth;
+  let isBallNearYBorder = ball.value && ballY > borderY;
+  let isBallOnCursor = Math.round(mouseX) === Math.round(ballX);
 
-  if (ball.value && ballY > borderY) {
-    ball.value.classList.add('hide-ball');
-  }
-
-  // hide ball to prevent horizontal scrolling
-  if (ball.value?.getBoundingClientRect().right + 200 >= window.innerWidth) {
-    ball.value.classList.add('hide-ball');
-  }
-
-  if (Math.round(mouseX) === Math.round(ballX)) {
-    ball.value.classList.add('hide-ball');
+  if (isBallNearXBorder || isBallNearYBorder || isBallOnCursor) {
+    ball.value.classList.add(HIDE_BALL_CLASS);
+  } else {
+    ball.value.classList.remove(HIDE_BALL_CLASS);
+    ball.value.style.left = `${ballX + 12}px`; // 12px to compensate for custom cursor size 24x24
+    ball.value.style.top = `${ballY + 12}px`;
+    ball.value.style.opacity = `${(ballY / 1000).toPrecision(4)}`;
   }
 
   requestAnimationFrame(animateBall);
@@ -159,9 +153,13 @@ onMounted(() => {
       top: 0;
       left: 0;
       transform: translate(-50%, -50%) scale(1);
-      background-color: #FA8072;
+      background-color: $color-highlight;
       mix-blend-mode: darken;
-      transition: transform 500ms ease;
+      transition: transform 800ms ease-in-out;
+      &--hide {
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 800ms ease-in-out;
+      }
     }
     &__heading,
     &__heading-mobile {
@@ -198,19 +196,38 @@ onMounted(() => {
       font-size: 14px;
     }
   }
-  .hide-ball {
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 300ms ease;
-  }
-@media screen and (max-width: $mobile-breaking-point) {
+
+@media only screen 
+    and (device-width: 390px) 
+    and (device-height: 844px) 
+    and (-webkit-device-pixel-ratio: 3) {
     .landing-page {
-      height: calc(100vmax - 100px);
+      height: calc(100vh - 100px);
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    &__ball {
+      display: none;
+    }
     &__heading {
       display: none;
     }
     &__heading-mobile {
       display: block;
+    }
+  }
+}
+
+@media screen and (device-width: 390px) and (orientation: landscape) {
+  .landing-page {
+    height: 100vh;
+    &__heading-mobile {
+      font-size: 180px;
+    }
+    &__about-me__heading,
+    &__about-me__text {
+      width: 50vw;
+    }
+    &__scroll-down {
+      display: none;
     }
   }
 }

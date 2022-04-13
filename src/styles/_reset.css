@@ -31,7 +31,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	background: linear-gradient(180deg, #FBFAFA 0%, #EFEEEE 100%);
+	background: linear-gradient(180deg, #FBFAFA, #EFEEEE,  #FBFAFA);
 }
 ol, ul {
 	list-style: none;
@@ -75,7 +75,7 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
 	height: 2px;
 	width: 10px;
-	background-color: black;
+	background-color: #062234;
 	border-radius: 10px;
 	border: none;
 }

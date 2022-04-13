@@ -1,11 +1,15 @@
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import projects from '../data/projects'
 import Card from './Card.vue';
 
+gsap.registerPlugin(ScrollTrigger);
+
 /**
- * @description
- * Generates cards from projects and dynamically calculates cardWidth based on screen size
+* @description
+* Generates cards from projects and dynamically calculates cardWidth based on screen size
 * @property {Number} VISIBLE_CARD_NUMBER -- determines the number of cards displayed in view
 * @property {Array} projects -- array of objects to populate card structure:
 * @example
@@ -20,18 +24,26 @@ import Card from './Card.vue';
 
 const VISIBLE_CARD_NUMBER = 3
 const state = reactive({ cardWidt: 0, calcMargin: 0 });
+const cardholder = ref(null);
+const galleryIntro = ref(null);
 
 let cardHolderWidth = 0;
-let isDown = false;
-let startX = null;
-let scrollLeft = null;
-let cardholder = ref(null);
 
 
 onMounted(() => {
   resizeHandler();
   window.addEventListener('resize', resizeHandler);
   document.addEventListener('keydown', event => keyboardNav(event));
+
+  gsap.from(galleryIntro.value, 1, {
+    x: '-30%',
+    opacity: 0.5,
+    scrollTrigger: {
+      trigger: galleryIntro.value,
+      start: 'top bottom',
+      scrub: true,
+    }
+  });
 });
 
 onBeforeUnmount(() => {
@@ -64,7 +76,7 @@ const keyboardNav = (e) => {
 
 <template>
   <main class="gallery">
-    <div class="gallery__intro">
+    <div ref="galleryIntro" class="gallery__intro">
       <span>{{ $t('galleryTitle') }}</span>
       <div class="nav-guide">
         <span>{{ $t('gallerySubtitle')}}</span>
@@ -127,9 +139,8 @@ const keyboardNav = (e) => {
 @import '../styles/mixins';
 
 .gallery {
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     &__intro {
-      margin-bottom: $size-medium;
+      margin-bottom: $size-xlarge;
       font-size: $standar-text;
       font-weight: $xbold-text;
       .nav-guide {
@@ -202,9 +213,13 @@ const keyboardNav = (e) => {
     }
   }
 
-  @media only screen and (max-width: $mobile-breaking-point) {
+@media only screen 
+    and (device-width: 390px) 
+    and (device-height: 844px) 
+    and (-webkit-device-pixel-ratio: 3) {
     .gallery {
       margin-top: $size-medium;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       &__cardholder {
         overflow-x: scroll;
         height: $gallery-height-mobile;
@@ -212,7 +227,6 @@ const keyboardNav = (e) => {
       &__intro {
         margin: 0 0 $size-small 0;
         padding: $size-small;
-        font-weight: $regular-text;
         .nav-guide--mobile {
         display: block;
         font-size: $size-xsmall;
