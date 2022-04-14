@@ -36,7 +36,7 @@
         width: $box-element;
         height: $box-element;
         border-radius: 10px;
-        background: linear-gradient(145deg, #ffffff, #EFEEEE);
+        background: linear-gradient(145deg, #ffffff 20%, #EFEEEE 80%);
         padding: 2px 6px;
         &:first-of-type {
           margin-right: 20px;

@@ -37,7 +37,7 @@ onMounted(() => {
 
   gsap.from(galleryIntro.value, 1, {
     x: '-30%',
-    opacity: 0.5,
+    opacity: 0,
     scrollTrigger: {
       trigger: galleryIntro.value,
       start: 'top bottom',

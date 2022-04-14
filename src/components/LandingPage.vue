@@ -201,8 +201,8 @@ onMounted(() => {
 
 @media only screen and (max-width: $mobile-breaking-point) {
     .landing-page {
-      height: calc(100vh - 100px);
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      height: 100vh;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) 100px env(safe-area-inset-left);
     &__ball {
       display: none;
     }

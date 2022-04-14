@@ -75,7 +75,7 @@ let props = defineProps({
     @include flex-column-center;
     &__link {
       @include flex-center-center;
-      width: 100%;
+      width: 200%;
       height: $card-button-height;
       padding: $card-button-padding;
       margin-bottom: 2px;
@@ -86,8 +86,6 @@ let props = defineProps({
       &:hover {
         @include shadow-in;
         cursor: url(../assets/link.svg), auto;
-        color: $color-text-grey-light;
-        border: none;
       }
       &:focus-visible {
         border: 2px solid black;

@@ -14,7 +14,7 @@
 }
 
 @mixin shadow-button {
-  box-shadow: 2px 2px 6px $color-shadow-dark, -2px -2px 6px $color-shadow-light;
+  box-shadow: 2px 2px 8px $color-shadow-dark, -2px -2px 8px $color-shadow-light;
 }
 
 @mixin flex-center-center {
