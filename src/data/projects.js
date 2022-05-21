@@ -21,7 +21,7 @@ export default [
   {
     name: 'fontas.me',
     description: `Link to the github repository of the current page build with VUE 3 (setup script) and Vite. Deployed with Netlify.`,
-    github: 'https://github.com/fontas-moraitis/fontas',
+    github: 'https://github.com/fontas-moraitis/fontas.me',
     logo: '03'
   }
 ]
