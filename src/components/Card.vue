@@ -6,7 +6,7 @@ let props = defineProps({
 </script>
 
 <template>
-  <section :style="{ width: props.cardWidth - 48 + 'px'}" class="card">
+  <section :style="{ width: props.cardWidth - 48 + 'px' }" class="card">
     <div class="card__logo">
       {{ props.item.logo }}
     </div>
@@ -26,12 +26,13 @@ let props = defineProps({
         {{ $t('visitLive') }}
       </a>
     </div>
-	</section>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 @import '../styles/variables';
 @import '../styles/mixins';
+
 .card {
   @include shadow-out;
   @include flex-column-center;
@@ -43,6 +44,7 @@ let props = defineProps({
   padding: $size-medium;
   margin: $size-medium;
   border-radius: $size-xsmall;
+
   &__logo {
     @include shadow-in;
     width: $card-logo-container-size;
@@ -52,8 +54,10 @@ let props = defineProps({
     place-content: center;
     font-size: $large-text;
   }
+
   &__text {
     @include flex-column-center;
+
     &__title {
       font-weight: $bold-text;
       color: $color-text-dark;
@@ -61,6 +65,7 @@ let props = defineProps({
       text-transform: uppercase;
       white-space: nowrap;
     }
+
     &__description {
       max-width: 80%;
       text-align: center;
@@ -71,8 +76,10 @@ let props = defineProps({
       font-weight: 500;
     }
   }
+
   &__buttons {
     @include flex-column-center;
+
     &__link {
       @include flex-center-center;
       width: 200%;
@@ -83,14 +90,17 @@ let props = defineProps({
       font-size: $fine-text;
       border-radius: 4px;
       color: $color-text-dark;
+
       &:hover {
         @include shadow-in;
         cursor: url(../assets/link.svg), auto;
       }
+
       &:focus-visible {
         border: 2px solid black;
         outline: none;
       }
+
       &__img {
         margin-left: $size-xxsmall;
       }
@@ -98,24 +108,27 @@ let props = defineProps({
   }
 }
 
-@media only screen and (max-width: $mobile-breaking-point)  {
+@media only screen and (max-width: $mobile-breaking-point) {
   .card {
     @include shadow-out-mobile;
     display: flex;
     margin: $size-medium;
     height: $card-total-height-mobile;
     padding: $size-xsmall;
+
     &__logo {
       width: $box-element;
       height: $box-element;
       font-size: $fine-text;
       flex-shrink: 0;
     }
+
     &__text {
       display: flex;
       align-items: center;
       justify-content: center;
       margin-top: $size-small;
+
       &__title {
         margin: 0;
         writing-mode: vertical-lr;
@@ -123,11 +136,14 @@ let props = defineProps({
         font-size: $mobile-text;
         white-space: nowrap;
       }
+
       &__description {
         display: none;
       }
     }
+
     &__buttons {
+
       &__link {
         width: auto;
         height: auto;
@@ -137,6 +153,7 @@ let props = defineProps({
         border: none;
         box-shadow: none;
         text-decoration: underline;
+
         &__img {
           display: none;
         }

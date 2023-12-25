@@ -1,58 +1,325 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+/* 
+MIT License,
+Copyright (c) 2023 dora michalostamou Permission is hereby granted,
+free of charge,
+to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction,
+including without limitation the rights to use,
+copy,
+modify,
+merge,
+publish,
+distribute,
+sublicense,
+and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS",
+WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE,
+ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+
+[`global.css`-`v1.0.0`](https: //github.com/dora-micha/global-css/global.css)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+/* --- root ---- */
+:root {
+	--color-bg-highlight: #FFF97A;
+	--font-size: 16px;
+	--spacing: 4px;
+	--text-color: #062234;
+}
+
+@font-face {
+	font-family: 'AktivGrotesk';
+	font-weight: 300 400 500 550 600 650;
+	font-style: normal;
+	src: local('AktivGrotesk'), url(./fonts/AktivGrotesk.ttf) format('truetype');
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	/* width & height properties include padding & border */
+}
+
+html {
+	font-family: 'AktivGrotesk', 'Times New Roman', 'Avenir', 'Helvetica', 'Arial', sans-serif;
+	font-size: var(--font-size);
+	color: var(--text-color);
+	font-weight: 400;
+	height: 100%;
+	line-height: 1.5;
+	overflow-wrap: break-word;
+	/* improve text rendering */
+	text-rendering: optimizeSpeed;
+	text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* Doesn't play well with google fonts */
+}
+
+body {
+	line-height: inherit;
+	height: 100%;
+	margin: 0;
+	background-color: #fbfafa;
+}
+
+/* --- text ---- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+	margin: 0;
+}
+
+blockquote,
+p {
+	margin: 0;
+}
+
+q {
+	quotes: '"' '"';
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+small {
+	font-size: calc(var(--font-size) - 4px);
+	/* 12px */
+}
+
+address,
+cite,
+dfn,
+em,
+i {
+	font-style: inherit;
+}
+
+code,
+kbd,
+samp {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+pre {
+	font-family: inherit;
+	font-size: inherit;
+	margin: 0;
+}
+
+/* --- lists ---- */
+
+dir,
+menu,
+ol,
+ul {
+	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-	box-sizing: border-box;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+
+dd,
+dl {
+	margin: 0;
+}
+
+/* --- media ---- */
+
+figure {
+	display: block;
+	margin: 0;
+}
+
+picture {
+	display: block;
+	font-size: 0;
+}
+
+img {
 	display: block;
 }
-body {
-	line-height: 1;
-	background: linear-gradient(180deg, #FBFAFA 20%, #EFEEEE 80%);
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
+
+/* --- table ---- */
+
 table {
+	border: 0;
 	border-collapse: collapse;
 	border-spacing: 0;
+	text-align: left;
+	vertical-align: baseline;
 }
-button {
-	background-color: transparent;
+
+caption {
+	text-align: inherit;
 }
+
+tbody tfoot,
+thead,
+tr {
+	vertical-align: inherit;
+}
+
+th {
+	font-weight: inherit;
+	padding: 0;
+}
+
+td {
+	padding: 0;
+}
+
+/* --- form ---- */
+
+fieldset {
+	border: 0;
+	margin: 0;
+	min-inline-size: initial;
+	min-width: initial;
+	padding: 0;
+}
+
+legend {
+	padding: 0;
+}
+
+label {
+	display: block;
+}
+
+button,
+input,
+select,
+textarea {
+	appearance: auto;
+	background-color: initial;
+	border: none;
+	border-radius: 0;
+	color: currentColor;
+	display: block;
+	font: inherit;
+	line-height: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+textarea {
+	resize: none;
+}
+
+input:placeholder-shown {
+	text-overflow: ellipsis;
+	/* adds ... when the placeholder text overlowing */
+}
+
+::placeholder {
+	color: inherit;
+	line-height: inherit;
+	opacity: 1;
+}
+
+input:focus::placeholder {
+	opacity: 0;
+	/* hides placeholder when user types */
+}
+
+input[type="range"] {
+	appearance: none;
+	background-color: #000;
+	cursor: pointer;
+	height: var(--spacing);
+	width: 100%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	appearance: none;
+	background-color: #fff;
+	border: 1px solid #000;
+	height: calc(var(--spacing) * 6);
+	width: calc(var(--spacing) * 2);
+}
+
+input[type="range"]::-moz-range-thumb {
+	appearance: none;
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: 0;
+	height: calc(var(--spacing) * 6);
+	width: calc(var(--spacing) * 2);
+}
+
+/* --- states ---- */
+
+:focus-visible {
+	outline: var(--color-bg-highlight) solid 2px;
+	outline-offset: 0;
+}
+
+@supports not selector(:focus-visible) {
+
+	/* fallback for browsers without focus-visible support */
+	:focus {
+		outline: var(--color-bg-highlight) solid 2px;
+		outline-offset: 0;
+	}
+}
+
+/* highlighted elements */
+::selection,
+mark {
+	background: var(--color-bg-highlight);
+	color: initial;
+}
+
+/* --- link & buttons ---- */
+
 a {
+	color: initial;
 	text-decoration: none;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	appearance: none;
+	cursor: pointer;
+	user-select: text;
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="reset"]:disabled,
+input[type="submit"]:disabled {
+	pointer-events: none;
+}
+
+/* --- other ---- */
+
+hr {
+	border-style: solid;
+	margin: 0;
+}
+
+iframe {
+	border: 0;
 }
 
 body::-webkit-scrollbar {

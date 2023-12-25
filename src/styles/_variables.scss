@@ -8,6 +8,20 @@ $color-shadow-light: rgba(255, 255, 255, 1);
 $color-border-highlight: rgba(255, 255, 255, 0.2);
 $color-highlight: #FA8072;
 $color-highlight-transparent: rgba(250, 128, 114, 0.5);
+$color-background-gradient: linear-gradient(180deg, #FBFAFA 20%, #EFEEEE 80%);
+
+@media (prefers-color-scheme: dark) {
+    $color-text-dark: #062234;
+    $color-text-grey: #555555;
+    $color-text-grey-light: #505050;
+    $color-cream-white: #181717;
+    $color-shadow-dark: rgba(217, 210, 200, 0.80);
+    $color-shadow-light: rgba(255, 255, 255, 1);
+    $color-border-highlight: rgba(255, 255, 255, 0.2);
+    $color-highlight: #FA8072;
+    $color-highlight-transparent: rgba(250, 128, 114, 0.5);
+    $color-background-gradient: linear-gradient(180deg, #0f0f0f 20%, #673d3d 80%);
+}
 
 /* Sizes */
 $size-xxsmall: 6px;
@@ -39,10 +53,10 @@ $graphic-text: 200px;
 /* Font-weight */
 $thin-text: 300;
 $regular-text: 400;
-$medium-text: 400;
-$bold-text: 600;
-$xbold-text: 700;
-$xxbold-text: 800;
+$medium-text: 500;
+$bold-text: 550;
+$xbold-text: 600;
+$xxbold-text: 650;
 
 /* GALLERY*/
 $gallery-height: 540px;

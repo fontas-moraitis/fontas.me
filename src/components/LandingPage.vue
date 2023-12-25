@@ -23,6 +23,8 @@ const scrollText = ref(null);
 const scrollArrow = ref(null);
 
 const SPEED = 0.08;
+const CURSOR_OFFSET = 12; // 12px to compensate for custom cursor size 24x24
+
 let borderY = 500;
 let mouseX = 0;
 let mouseY = 0;
@@ -49,8 +51,8 @@ const animateBall = () => {
     ball.value.classList.add(HIDE_BALL_CLASS);
   } else {
     ball.value.classList.remove(HIDE_BALL_CLASS);
-    ball.value.style.left = `${ballX + 12}px`; // 12px to compensate for custom cursor size 24x24
-    ball.value.style.top = `${ballY + 12}px`;
+    ball.value.style.left = `${ballX + CURSOR_OFFSET}px`;
+    ball.value.style.top = `${ballY + CURSOR_OFFSET}px`;
     ball.value.style.opacity = `${(ballY / 1000).toPrecision(4)}`;
   }
 
@@ -72,34 +74,39 @@ onMounted(() => {
     }
   });
 
-  gsap.from([mainHead?.value, mainHeadMobile?.value], 1.2, {
+  gsap.from([mainHead?.value, mainHeadMobile?.value], {
+    duration: 1.8,
     y: -400,
     opacity: 0,
     ease: Expo.easeInOut,
   });
 
-  gsap.from(aboutMeHead.value, 1.2, {
+  gsap.from(aboutMeHead.value, {
+    duration: 1.8,
     delay: .4,
     y: '100vh',
     opacity: 0,
     ease: Expo.easeInOut,
   });
 
-  gsap.from(aboutMeText.value, 1.2, {
+  gsap.from(aboutMeText.value, {
+    duration: 1.8,
     delay: .8,
     y: '100%',
     opacity: 0,
     ease: Expo.easeInOut,
   });
 
-  gsap.from(scrollText.value, 1, {
-    delay: 1,
+  gsap.from(scrollText.value, {
+    duration: 1,
+    delay: 1.5,
     y: '200%',
     opacity: 0,
     ease: Expo.easeInOut,
   });
 
-  gsap.to(scrollArrow.value, 1.2, {
+  gsap.to(scrollArrow.value, {
+    duration: 1.8,
     y: 10,
     yoyo: true,
     repeat: -1,
@@ -109,10 +116,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div 
-    class="landing-page"
-    @mousemove="getMousePosition"
-  >
+  <div class="landing-page" @mousemove="getMousePosition">
     <div ref="ball" class="landing-page__ball" />
     <p ref="mainHead" class="landing-page__heading">
       {{ $t('hello') }}
@@ -131,7 +135,8 @@ onMounted(() => {
     <div ref="scrollText" class="landing-page__scroll-down">
       <p>{{ $t('scrollDown') }}</p>
       <svg ref="scrollArrow" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
-        <polyline points="16 10 12 14 8.05 10" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        <polyline points="16 10 12 14 8.05 10" stroke="#000000" stroke-width="1" stroke-linecap="round"
+          stroke-linejoin="round" fill="none" />
       </svg>
     </div>
   </div>
@@ -139,76 +144,88 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 @import '../styles/variables';
-  .landing-page {
-    height: 100vh;
-    max-width: 100vw;
-    padding: 24px;
-    overflow: hidden;
+
+.landing-page {
+  min-height: 100svh;
+  max-width: 100vw;
+  padding: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__ball {
+    width: 30vmin;
+    height: 30vmin;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%) scale(1);
+    background-color: $color-highlight;
+    mix-blend-mode: darken;
+    transition: transform 800ms ease-in-out;
+
+    &--hide {
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 800ms ease-in-out;
+    }
+  }
+
+  &__heading,
+  &__heading-mobile {
+    font-size: 200px;
+    line-height: 1;
+  }
+
+  &__heading-mobile {
+    display: none;
+  }
+
+  &__about-me {
+    margin-bottom: 24px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    &__ball {
-      width: 30vmin;
-      height: 30vmin;
-      border-radius: 50%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translate(-50%, -50%) scale(1);
-      background-color: $color-highlight;
-      mix-blend-mode: darken;
-      transition: transform 800ms ease-in-out;
-      &--hide {
-        transform: translate(-50%, -50%) scale(0);
-        transition: transform 800ms ease-in-out;
-      }
-    }
+    align-items: flex-end;
+    overflow: hidden;
+
     &__heading,
-    &__heading-mobile {
-      font-size: 200px;
-      margin-bottom: 8px;
+    &__text {
+      width: 64vmin;
     }
-    &__heading-mobile {
-      display: none;
+
+    &__heading {
+      font-size: 22px;
+      font-weight: 550;
+      margin-bottom: 6px;
     }
-    &__about-me {
-      margin-right: 5%;
-      margin-bottom: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      overflow: hidden;
-      &__heading {
-        font-weight: bold;
-        font-size: 22px;
-        margin-bottom: 12px;
-        width: 60vmin;
-      }
-      &__text {
-        width: 60vmin;
-        line-height: 22px;
-      }
-    }
-    &__scroll-down {
-      position: relative;
-      bottom: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+
+    &__text {
+      text-wrap: balance;
       font-size: 14px;
     }
   }
 
+  &__scroll-down {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+  }
+}
+
 @media only screen and (max-width: $mobile-breaking-point) {
-    .landing-page {
-      height: 100vh;
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) 100px env(safe-area-inset-left);
+  .landing-page {
     &__ball {
       display: none;
     }
+
     &__heading {
       display: none;
     }
+
     &__heading-mobile {
       display: block;
     }
@@ -217,14 +234,17 @@ onMounted(() => {
 
 @media screen and (device-width: 390px) and (orientation: landscape) {
   .landing-page {
-    height: 100vh;
+    height: 100svh;
+
     &__heading-mobile {
-      font-size: 180px;
+      font-size: 160px;
     }
+
     &__about-me__heading,
     &__about-me__text {
-      width: 50vw;
+      min-width: 50vw;
     }
+
     &__scroll-down {
       display: none;
     }
