@@ -20,8 +20,8 @@ import Footer from './components/Footer.vue';
 
 #app {
   cursor: url(./assets/circle.svg), auto;
-  background: $color-background-gradient;
-
+  background: var(--color-background-gradient);
+  color: var(--color-text-dark);
 }
 
 .content-wrapper {

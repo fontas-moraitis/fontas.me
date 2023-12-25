@@ -36,17 +36,45 @@ let props = defineProps({
 .card {
   @include shadow-out;
   @include flex-column-center;
+
   height: $card-total-height;
   justify-content: space-between;
-  color: $color-text-grey;
+  color: var(--color-text-grey);
   flex-shrink: 0;
   flex-grow: 0;
   padding: $size-medium;
   margin: $size-medium;
   border-radius: $size-xsmall;
+  position: relative;
+
+  &:after {
+    content: "";
+    height: 70px;
+    width: 1px;
+    position: absolute;
+    left: -1px;
+    top: 65%;
+    transition: top, opacity;
+    transition-duration: 800ms;
+    transition-timing-function: ease;
+    background: linear-gradient(transparent,
+        var(--color-glare),
+        transparent);
+    opacity: 0;
+    top: 65%;
+    opacity: 0;
+  }
+
+  &:hover:after {
+    top: 25%;
+    opacity: 1;
+    transition: all 300ms ease-in-out;
+  }
+
 
   &__logo {
     @include shadow-in;
+
     width: $card-logo-container-size;
     height: $card-logo-container-size;
     border-radius: 50%;
@@ -60,7 +88,7 @@ let props = defineProps({
 
     &__title {
       font-weight: $bold-text;
-      color: $color-text-dark;
+      color: var(--color-text-dark);
       margin-bottom: $size-small;
       text-transform: uppercase;
       white-space: nowrap;
@@ -71,9 +99,9 @@ let props = defineProps({
       text-align: center;
       font-family: 'Slabo 27px', serif;
       font-size: $fine-text;
-      color: $color-text-grey-light;
+      color: var(--color-text-grey-light);
       line-height: 1.5;
-      font-weight: 500;
+      font-weight: $medium-text;
     }
   }
 
@@ -89,7 +117,7 @@ let props = defineProps({
       white-space: nowrap;
       font-size: $fine-text;
       border-radius: 4px;
-      color: $color-text-dark;
+      color: var(--color-text-dark);
 
       &:hover {
         @include shadow-in;
@@ -111,6 +139,7 @@ let props = defineProps({
 @media only screen and (max-width: $mobile-breaking-point) {
   .card {
     @include shadow-out-mobile;
+
     display: flex;
     margin: $size-medium;
     height: $card-total-height-mobile;

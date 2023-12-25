@@ -1,20 +1,20 @@
 @mixin shadow-out {
-  border: 1px solid $color-border-highlight;
-  box-shadow: -6px -6px 26px 0 $color-shadow-light, 6px 6px 16px 0 $color-shadow-dark;
+  border: 1px solid var(--color-border-highlight);
+  box-shadow: -6px -6px 26px 0 var(--color-shadow-light), 6px 6px 16px 0 var(--color-shadow-dark);
 }
 
 @mixin shadow-in {
-  border: 1px solid $color-border-highlight;
-  box-shadow: inset -6px -6px 26px 0 $color-shadow-light, inset 6px 6px 16px 0 $color-shadow-dark;
+  border: 1px solid var(--color-border-highlight);
+  box-shadow: inset -6px -6px 26px 0 var(--color-shadow-light), inset 6px 6px 16px 0 var(--color-shadow-dark);
 }
 
 @mixin shadow-out-mobile {
-  border: 1px solid $color-border-highlight;
-  box-shadow: -4px -4px 14px 0 $color-shadow-light, 4px 4px 10px 0 $color-shadow-dark;
+  border: 1px solid var(--color-border-highlight);
+  box-shadow: -4px -4px 14px 0 var(--color-shadow-light), 4px 4px 10px 0 var(--color-shadow-dark);
 }
 
 @mixin shadow-button {
-  box-shadow: 2px 2px 8px $color-shadow-dark, -2px -2px 8px $color-shadow-light;
+  box-shadow: 2px 2px 8px var(--color-shadow-dark), -2px -2px 8px var(--color-shadow-light);
 }
 
 @mixin flex-center-center {
