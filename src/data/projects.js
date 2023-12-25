@@ -1,13 +1,13 @@
 export default [
   {
     name: 'cupculator',
-    description: `A Progressive web app that helps you calculate the quantity of materials used in cooking recipes. Installable PWA with REACT and Netlify Serverless funtions.`,
+    description: `A Progressive web app that helps you calculate the quantity of materials used in cooking recipes. Installable PWA with REACT | Vercel | Redis KV`,
     live: '//www.cupculator.com',
     logo: 'new'
   },
   {
     name: 'stavrosperakis.com',
-    description: `A gallery web site for a sculptur and artist in Athens, content is handled with Storyblok. Build with VUE.`,
+    description: `A gallery web site for a sculptur and artist in Athens, content is handled with Storyblok. React | NextJS.`,
     github: 'https://github.com/fontas-moraitis/Gallery-eshop',
     live: '//www.stavrosperakis.com',
     logo: '01'
@@ -20,8 +20,8 @@ export default [
   },
   {
     name: 'fontas.me',
-    description: `Link to the github repository of the current page build with VUE 3 (setup script) and Vite. Deployed with Netlify.`,
-    github: 'https://github.com/fontas-moraitis/fontas.me',
+    description: `Link to the github repository of the current page. Vue 3 | Vite | Gsap`,
+    github: 'https://fontas-me.vercel.app',
     logo: '03'
   }
 ]
