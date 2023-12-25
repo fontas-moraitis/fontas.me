@@ -176,7 +176,7 @@ const keyboardNav = (e) => {
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 1px solid $color-border-highlight;
+      border: 1px solid var(--color-border-highlight);
       outline: none;
       border-radius: 8px;
       margin: $size-small;

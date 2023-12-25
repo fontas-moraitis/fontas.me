@@ -31,7 +31,7 @@ let mouseY = 0;
 let ballX = 0;
 let ballY = 0;
 
-const getMousePosition = () => {
+const getMousePosition = (event) => {
   mouseX = event.pageX;
   mouseY = event.pageY;
 }
@@ -43,14 +43,14 @@ const animateBall = () => {
   ballX = ballX + (distX * SPEED);
   ballY = ballY + (distY * SPEED);
 
-  let isBallNearXBorder = ball.value?.getBoundingClientRect().right + 200 >= window.innerWidth;
+  let isBallNearXBorder = ball.value && ballX >= window.innerWidth - 140; // add 140px safe zone to prevent overflow
   let isBallNearYBorder = ball.value && ballY > borderY;
   let isBallOnCursor = Math.round(mouseX) === Math.round(ballX);
 
   if (isBallNearXBorder || isBallNearYBorder || isBallOnCursor) {
-    ball.value.classList.add(HIDE_BALL_CLASS);
+    ball.value?.classList.add(HIDE_BALL_CLASS);
   } else {
-    ball.value.classList.remove(HIDE_BALL_CLASS);
+    ball.value?.classList.remove(HIDE_BALL_CLASS);
     ball.value.style.left = `${ballX + CURSOR_OFFSET}px`;
     ball.value.style.top = `${ballY + CURSOR_OFFSET}px`;
     ball.value.style.opacity = `${(ballY / 1000).toPrecision(4)}`;
@@ -75,14 +75,14 @@ onMounted(() => {
   });
 
   gsap.from([mainHead?.value, mainHeadMobile?.value], {
-    duration: 1.8,
+    duration: 2,
     y: -400,
     opacity: 0,
     ease: Expo.easeInOut,
   });
 
   gsap.from(aboutMeHead.value, {
-    duration: 1.8,
+    duration: 2,
     delay: .4,
     y: '100vh',
     opacity: 0,
@@ -90,9 +90,9 @@ onMounted(() => {
   });
 
   gsap.from(aboutMeText.value, {
-    duration: 1.8,
-    delay: .8,
-    y: '100%',
+    duration: 4,
+    delay: .2,
+    y: '150%',
     opacity: 0,
     ease: Expo.easeInOut,
   });
@@ -106,7 +106,7 @@ onMounted(() => {
   });
 
   gsap.to(scrollArrow.value, {
-    duration: 1.8,
+    duration: 2.3,
     y: 10,
     yoyo: true,
     repeat: -1,
@@ -116,7 +116,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="landing-page" @mousemove="getMousePosition">
+  <div class="landing-page" @mousemove="($event) => getMousePosition($event)">
     <div ref="ball" class="landing-page__ball" />
     <p ref="mainHead" class="landing-page__heading">
       {{ $t('hello') }}
@@ -135,7 +135,7 @@ onMounted(() => {
     <div ref="scrollText" class="landing-page__scroll-down">
       <p>{{ $t('scrollDown') }}</p>
       <svg ref="scrollArrow" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
-        <polyline points="16 10 12 14 8.05 10" stroke="#000000" stroke-width="1" stroke-linecap="round"
+        <polyline points="16 10 12 14 8.05 10" stroke="currentcolor" stroke-width="1" stroke-linecap="round"
           stroke-linejoin="round" fill="none" />
       </svg>
     </div>
@@ -162,8 +162,8 @@ onMounted(() => {
     top: 0;
     left: 0;
     transform: translate(-50%, -50%) scale(1);
-    background-color: $color-highlight;
-    mix-blend-mode: darken;
+    background-color: var(--color-highlight);
+    // mix-blend-mode: darken;
     transition: transform 800ms ease-in-out;
 
     &--hide {
