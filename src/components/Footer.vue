@@ -31,7 +31,7 @@
     width: $box-element;
     height: $box-element;
     border-radius: 10px;
-    background: linear-gradient(145deg, #ffffff 20%, #EFEEEE 80%);
+    background: var(--social-bg-gradient);
     padding: 2px 6px;
 
     &:first-of-type {
@@ -41,6 +41,12 @@
     &__img {
       width: $icon-button-size;
       height: $icon-button-size;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      &__img {
+        filter: invert(70%);
+      }
     }
 
     &:hover,
@@ -54,7 +60,6 @@
 
     &:active {
       @include shadow-in;
-      background: #efeeee;
 
       img {
         transform: scale(0.8);

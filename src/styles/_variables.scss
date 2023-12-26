@@ -1,15 +1,4 @@
 /* Colors */
-// $color-text-dark: #062234;
-// $color-text-grey: #555555;
-// $color-text-grey-light: #505050;
-// $color-cream-white: #EFEEEE;
-// $color-shadow-dark: rgba(217, 210, 200, 0.80);
-// $color-shadow-light: rgba(255, 255, 255, 1);
-// $color-border-highlight: rgba(255, 255, 255, 0.2);
-// $color-highlight: #FA8072;
-// $color-highlight-transparent: rgba(250, 128, 114, 0.5);
-// $color-background-gradient: linear-gradient(180deg, #FBFAFA 20%, #EFEEEE 80%);
-
 :root {
     --color-text-dark: #062234;
     --color-text-grey: #555555;
@@ -20,6 +9,8 @@
     --color-highlight: #FA8072;
     --color-background-gradient: linear-gradient(180deg, #FBFAFA 20%, #EFEEEE 80%);
     --color-glare: #ffffff;
+    --app-background: #fbfafa;
+    --social-bg-gradient: linear-gradient(145deg, #ffffff 20%, #EFEEEE 80%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +25,8 @@
         --color-highlight: #f91e06;
         --color-background-gradient: linear-gradient(180deg, #000000 20%, #111111 80%);
         --color-glare: #f91e06;
+        --app-background: #000000;
+        --social-bg-gradient: linear-gradient(145deg, #171717 20%, #151515 80%);
     }
 }
 

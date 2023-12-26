@@ -69,7 +69,7 @@ body {
 	line-height: inherit;
 	height: 100%;
 	margin: 0;
-	background-color: #fbfafa;
+	background-color: var(--app-background)
 }
 
 /* --- text ---- */
