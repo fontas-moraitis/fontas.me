@@ -134,7 +134,8 @@ onMounted(() => {
     </div>
     <div ref="scrollText" class="landing-page__scroll-down">
       <p>{{ $t('scrollDown') }}</p>
-      <svg ref="scrollArrow" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+      <svg aria-hidden="true" ref="scrollArrow" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+        viewBox="0 0 24 24">
         <polyline points="16 10 12 14 8.05 10" stroke="currentcolor" stroke-width="1" stroke-linecap="round"
           stroke-linejoin="round" fill="none" />
       </svg>
