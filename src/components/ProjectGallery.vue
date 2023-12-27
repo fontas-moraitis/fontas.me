@@ -82,14 +82,14 @@ const keyboardNav = (e) => {
       <div class="nav-guide">
         <span>{{ $t('gallerySubtitle') }}</span>
         <span class="nav-guide__left">
-          <svg data-v-cd28a988="" xmlns="http://www.w3.org/2000/svg" width="20" height="auto" viewBox="0 0 24 24">
-            <path data-v-cd28a988="" d="M15,16.27,9,12l6-4.27Z" stroke="#2C2C2C" stroke-width="0" stroke-linecap="round"
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="auto" viewBox="0 0 24 24">
+            <path d="M15,16.27,9,12l6-4.27Z" stroke="#2C2C2C" stroke-width="0" stroke-linecap="round"
               stroke-linejoin="round" fill="#9E9E9E" />
           </svg>
         </span>
         <span class="nav-guide__right">
-          <svg data-v-cd28a988="" xmlns="http://www.w3.org/2000/svg" width="20" height="auto" viewBox="0 0 24 24">
-            <path data-v-cd28a988="" d="M9,7.73,15,12,9,16.27Z" stroke="#2C2C2C" stroke-width="0" stroke-linecap="round"
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="auto" viewBox="0 0 24 24">
+            <path d="M9,7.73,15,12,9,16.27Z" stroke="#2C2C2C" stroke-width="0" stroke-linecap="round"
               stroke-linejoin="round" fill="#9E9E9E" />
           </svg>
         </span>
@@ -104,11 +104,17 @@ const keyboardNav = (e) => {
     <section class="gallery__btn-holder">
       <button aria-label="button previous" class="gallery__btn-holder__btn" type="button" name="previous card"
         title="previous card" @click="previous">
-        <img class="gallery__btn-holder__btn__img" src="../assets/arrow-left.svg" alt="previous card" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <polyline points="17 21.9 7.05 12 17 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="square"
+            stroke-linejoin="square" fill="none"></polyline>
+        </svg>
       </button>
       <button aria-label="button next" class="gallery__btn-holder__btn" type="button" name="next card" title="next card"
         @click="next">
-        <img class="gallery__btn-holder__btn__img" src="../assets/arrow-right.svg" alt="next card" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <polyline points="7.05 2.1 17 12 7.05 21.9" stroke="currentColor" stroke-width="2" stroke-linecap="square"
+            stroke-linejoin="square" fill="none"></polyline>
+        </svg>
       </button>
     </section>
   </main>
@@ -191,7 +197,7 @@ const keyboardNav = (e) => {
       }
 
       &:focus-visible {
-        border: 2px solid black;
+        border: 2px solid var(--color-highlight);
       }
 
       &:active {

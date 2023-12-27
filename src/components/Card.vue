@@ -125,7 +125,7 @@ let props = defineProps({
       }
 
       &:focus-visible {
-        border: 2px solid black;
+        border: 2px solid var(--color-highlight);
         outline: none;
       }
 
