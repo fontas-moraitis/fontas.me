@@ -6,7 +6,7 @@ let props = defineProps({
 </script>
 
 <template>
-  <section :style="{ width: props.cardWidth - 48 + 'px' }" class="card">
+  <div :style="{ width: props.cardWidth - 48 + 'px' }" class="card">
     <div class="card__logo">
       {{ props.item.logo }}
     </div>
@@ -26,7 +26,7 @@ let props = defineProps({
         {{ $t('visitLive') }}
       </a>
     </div>
-  </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
