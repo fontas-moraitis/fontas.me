@@ -76,7 +76,7 @@ const keyboardNav = (e) => {
 </script>
 
 <template>
-  <main class="gallery">
+  <section class="gallery">
     <div ref="galleryIntro" class="gallery__intro">
       <span>{{ $t('galleryTitle') }}</span>
       <div class="nav-guide">
@@ -101,7 +101,7 @@ const keyboardNav = (e) => {
         <Card v-for="(item, index) in projects" :key="index" :item="item" :cardWidth="state.cardWidth" />
       </div>
     </div>
-    <section class="gallery__btn-holder">
+    <div class="gallery__btn-holder">
       <button aria-label="button previous" class="gallery__btn-holder__btn" type="button" name="previous card"
         title="previous card" @click="previous">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -116,8 +116,8 @@ const keyboardNav = (e) => {
             stroke-linejoin="square" fill="none"></polyline>
         </svg>
       </button>
-    </section>
-  </main>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>

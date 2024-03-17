@@ -113,10 +113,58 @@ onMounted(() => {
     ease: Bounce.out,
   });
 });
+
+const sun = ref(window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+const handleThemeSwitch = () => {
+  if (document.documentElement.getAttribute("data-theme") == "dark") {
+    document.documentElement.setAttribute("data-theme", "light");
+    sun.value = false
+  } else {
+    document.documentElement.setAttribute("data-theme", "dark")
+    sun.value = true;
+  }
+}
 </script>
 
 <template>
-  <div class="landing-page" @mousemove="($event) => getMousePosition($event)">
+  <section class="landing-page" @mousemove="($event) => getMousePosition($event)">
+    <button
+      class="landing-page__theme-toggle"
+      aria-label="Toggle theme"
+      title="Toggle theme"
+      @click.prevent="handleThemeSwitch"
+    >
+      <svg v-if="sun" width="30" height="30">
+        <circle cx="15" cy="15" r="6" fill="currentColor" />
+        <line
+          id="ray"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          x1="15"
+          y1="1"
+          x2="15"
+          y2="4"
+        />
+        <use href="#ray" transform="rotate(45 15 15)" />
+        <use href="#ray" transform="rotate(90 15 15)" />
+        <use href="#ray" transform="rotate(135 15 15)" />
+        <use href="#ray" transform="rotate(180 15 15)" />
+        <use href="#ray" transform="rotate(225 15 15)" />
+        <use href="#ray" transform="rotate(270 15 15)" />
+        <use href="#ray" transform="rotate(315 15 15)" />
+      </svg>
+      <svg v-else width="30" height="30" class="landing-page__theme-toggle__dark">
+        <path
+          fill="currentColor"
+          d="
+          M 23, 5
+          A 12 12 0 1 0 23, 25
+          A 12 12 0 0 1 23, 5"
+        />
+      </svg>
+    </button>
     <div ref="ball" class="landing-page__ball" />
     <p ref="mainHead" class="landing-page__heading">
       {{ $t('hello') }}
@@ -140,7 +188,7 @@ onMounted(() => {
           stroke-linejoin="round" fill="none" />
       </svg>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
@@ -155,6 +203,13 @@ onMounted(() => {
   flex-direction: column;
   justify-content: space-between;
 
+  &__theme-toggle {
+    cursor: pointer !important;
+    padding: 8px; 
+    margin-left: auto;
+    z-index: 2; 
+  }
+
   &__ball {
     width: 30vmin;
     height: 30vmin;
@@ -164,7 +219,6 @@ onMounted(() => {
     left: 0;
     transform: translate(-50%, -50%) scale(1);
     background-color: var(--color-highlight);
-    // mix-blend-mode: darken;
     transition: transform 800ms ease-in-out;
 
     &--hide {

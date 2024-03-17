@@ -1,33 +1,33 @@
 /* Colors */
 :root {
     --color-text-dark: #062234;
-    --color-text-grey: #555555;
-    --color-text-grey-light: #505050;
+    --color-text-grey: #333333;
+    --color-text-grey-light: #404040;
     --color-shadow-dark: rgba(217, 210, 200, 0.80);
     --color-shadow-light: rgba(255, 255, 255, 1);
     --color-border-highlight: rgba(255, 255, 255, 0.2);
     --color-highlight: #FA8072;
     --color-background-gradient: linear-gradient(180deg, #FBFAFA 20%, #EFEEEE 80%);
-    --color-glare: #ffffff;
+    --color-glare: #f91e06;
     --app-background: #fbfafa;
     --social-bg-gradient: linear-gradient(145deg, #ffffff 20%, #EFEEEE 80%);
+    --color-bg-highlight: #FA8072;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-text-dark: #fbfafa;
-        --color-text-grey: #a3a3a3;
-        --color-text-grey-light: #838383;
-        --color-cream-white: #EFEEEE;
-        --color-shadow-dark: rgba(18, 17, 17, 0.8);
-        --color-shadow-light: rgb(0, 0, 0);
-        --color-border-highlight: rgba(26, 26, 26, 0.9);
-        --color-highlight: #f91e06;
-        --color-background-gradient: linear-gradient(180deg, #000000 20%, #111111 80%);
-        --color-glare: #f91e06;
-        --app-background: #000000;
-        --social-bg-gradient: linear-gradient(145deg, #171717 20%, #151515 80%);
-    }
+[data-theme="dark"] {
+    --color-text-dark: #fbfafa;
+    --color-text-grey: #a3a3a3;
+    --color-text-grey-light: #838383;
+    --color-cream-white: #EFEEEE;
+    --color-shadow-dark: rgba(18, 17, 17, 0.8);
+    --color-shadow-light: rgb(0, 0, 0);
+    --color-border-highlight: rgba(26, 26, 26, 0.9);
+    --color-highlight: #f91e06;
+    --color-background-gradient: linear-gradient(180deg, #000000 20%, #111111 80%);
+    --color-glare: #f91e06;
+    --app-background: #000000;
+    --social-bg-gradient: linear-gradient(145deg, #171717 20%, #151515 80%);
+    --color-bg-highlight: #FA8072;
 }
 
 /* Sizes */
@@ -67,7 +67,7 @@ $xxbold-text: 650;
 
 /* GALLERY*/
 $gallery-height: 540px;
-$gallery-height-mobile: 400px;
+$gallery-height-mobile: 420px;
 
 /* CARD variables */
 $card-total-height: 480px;

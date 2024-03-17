@@ -4,6 +4,13 @@
 import LandingPage from './components/LandingPage.vue';
 import ProjectGallery from './components/ProjectGallery.vue';
 import Footer from './components/Footer.vue';
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+})
 </script>
 
 <template>
